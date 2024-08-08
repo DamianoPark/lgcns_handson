@@ -1,9 +1,10 @@
 [project]
-name = "lgcns-mlops-template"
+name = "lgcns_handson"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "Jay Han", email = "otzslayer@gmail.com"},
+    {name = "Goeun Lee", email = "goeunlee.st@gmail.com"},
 ]
 dependencies = [
     "pandas>=2.1.4",
