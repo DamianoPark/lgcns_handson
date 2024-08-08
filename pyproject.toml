@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     {name = "Jay Han", email = "otzslayer@gmail.com"},
-    {name = "Jaewoo Park", email = "49280116+DamianoPark@users.noreply.github.com"},
 ]
 dependencies = [
     "pandas>=2.1.4",
