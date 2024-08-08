@@ -17,6 +17,7 @@ class Features(BaseModel):
     humidity: int
     windspeed: float
 
+
 # 학습 코드에서 저장한 베스트 모델을 가져올 것 (bike_sharing:latest)
 bento_model = bentoml.sklearn.get("bike_sharing:latest")
 model_runner = bento_model.to_runner()
