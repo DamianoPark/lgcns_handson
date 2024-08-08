@@ -7,7 +7,7 @@ from sklearn.preprocessing import FunctionTransformer
 CAT_FEATURES = [
     "season",
     "holiday",
-    "workingdy",
+    "workingday",
     "weather"
 ]
 
