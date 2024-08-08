@@ -7,16 +7,15 @@ from pydantic import BaseModel
 
 
 class Features(BaseModel):
-    bhk: int
-    size: int
-    floor: str
-    area_type: str
-    city: str
-    furnishing_status: str
-    tenant_preferred: str
-    bathroom: int
-    point_of_contact: str
-
+    datetime: int
+    season: int
+    holiday: int
+    workingday: int
+    weather: int
+    temp: float
+    atemp: float
+    humidity: int
+    windspeed: float
 
 # 학습 코드에서 저장한 베스트 모델을 가져올 것 (bike_sharing:latest)
 bento_model = bentoml.sklearn.get("bike_sharing:latest")
