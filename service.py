@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 
 class Features(BaseModel):
-    datetime: int
+    datetime: str
     season: int
     holiday: int
     workingday: int
