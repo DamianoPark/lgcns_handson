@@ -30,11 +30,11 @@ warnings.filterwarnings(action="ignore")
 
 
 if __name__ == "__main__":
-    train_df = pd.read_csv(os.path.join(DATA_PATH, "house_rent_train.csv"))
+    train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
     logger.debug("Load data...")
 
-    _X = train_df.drop(["rent", "area_locality", "posted_on"], axis=1)
-    y = np.log1p(train_df["rent"])
+    _X = train_df.drop(["count"], axis=1)
+    y = np.log1p(train_df["count"])
 
     # X=_X, y=y로 전처리 파이프라인을 적용해 X에 저장
     X = preprocess_pipeline.fit_transform(X=_X, y=y)
@@ -44,15 +44,15 @@ if __name__ == "__main__":
         os.makedirs(os.path.join(DATA_PATH, "storage"))
     X.assign(rent=y).to_csv(
         # DATA_PATH 밑에 storage 폴더 밑에 피처 데이터를 저장
-        os.path.join(DATA_PATH, "storage", "house_rent_train_features.csv"),
+        os.path.join(DATA_PATH, "storage", "bike_sharing_train_features.csv"),
         index=False,
     )
     logger.debug("Save the feature data...")
 
     params_candidates = {
         "learning_rate": [0.01, 0.05, 0.1],
-        "max_depth": [3, 4, 5, 6],
-        "max_features": [1.0, 0.9, 0.8, 0.7],
+        "max_depth": [3, 4, 5 ],
+        "max_features": [1.0, 0.9, 0.8],
     }
 
     param_set = get_param_set(params=params_candidates)
@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
     # BentoML에 모델 저장
     bentoml.sklearn.save_model(
-        name="house_rent",
+        name="bike_sharing",
         model=mlflow.sklearn.load_model(best_model_uri),
         signatures={"predict": {"batchable": True, "batch_dim": 0}},
         metadata=best_params,
